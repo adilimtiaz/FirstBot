@@ -2,9 +2,14 @@ import praw
 import pdb
 import re
 import os
+from datetime import datetime
 
 # Create Reddit instance
 reddit = praw.Reddit('bot1')
+
+# Add debugging information for Vagrant cron
+with open("running_logs.txt", "w") as file:
+    file.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\n")
 
 if not os.path.isfile("posts_replied_to.txt"):
     posts_replied_to = []
